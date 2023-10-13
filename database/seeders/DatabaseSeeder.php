@@ -23,8 +23,6 @@ class DatabaseSeeder extends Seeder
             InstitutionSeeder::class,
             UniversitySeeder::class,
             UserSeeder::class,
-            PsychologistSeeder::class,
-            StudentsSeeder::class,
             ClassificationsSeeder::class,
             LevelSeeder::class,
             SessionsSeeder::class,
