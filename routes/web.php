@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -25,4 +24,25 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('login', function() {
+    return Inertia::render('Login');
+})->name('login');
 
+Route::post('login', function() {
+    $attributes = request()->validate([
+        'email' => 'required|email|max:100',
+        'password' => 'required|string|min:7|max:100'
+    ]);
+
+    if (Auth::attempt($attributes)) {
+        request()->session()->regenerate();
+
+        return redirect()->route('home');
+    } else {
+        return back()->withErrors([
+            'email' => 'Cuenta no encontrada'
+        ]);
+    }
+});
+
+Route::get('logeado', fn() => 'Logeado xd')->name('home');

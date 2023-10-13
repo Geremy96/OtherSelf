@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Psychologist;
 use App\Models\Student;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,8 +15,12 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        $psychologist_users = \App\Models\User::factory(10)->create();
-        $students_users = \App\Models\User::factory(10)->create();
+        $psychologist_users = User::factory(10)->create();
+        $students_users = User::factory(10)->create();
+
+        $psychologist_users->add(User::factory()->create([
+            'email' => 'example@example.com'
+        ]));
 
         Psychologist::factory(count($psychologist_users))->sequence(fn ($sqn) => [
             'user_id' => $psychologist_users[$sqn->index]
