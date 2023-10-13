@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\University;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -13,13 +12,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('psychologists', function (Blueprint $table) {
+        Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->string('identification_number');
-            $table->uuid('stamp');
-            $table->uuid('certificate_university');
             $table->foreignIdFor(User::class)->constrained();
-            $table->foreignIdFor(University::class)->constrained();
+            $table->string('section');
+            $table->integer('grade');
+            $table->boolean('is_ambassador');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('psychologists');
+        Schema::dropIfExists('students');
     }
 };

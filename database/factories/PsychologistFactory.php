@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\University;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -18,12 +19,14 @@ class PsychologistFactory extends Factory
     public function definition(): array
     {
         $user_ids = User::pluck('id');
+        $university_ids = University::pluck('id');
 
         return [
             'identification_number' => fake()->word(),
             'stamp' => fake()->uuid(),
             'certificate_university'  =>fake()->uuid(),
             'user_id' => $user_ids->random(),
+            'university_id' => $university_ids->random(),
         ];
     }
 }

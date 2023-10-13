@@ -24,14 +24,11 @@ class UserFactory extends Factory
             'firstname' => fake()->word(),
             'lastname' => fake()->word(),
             'age' => fake()->numberBetween(18,100),
-            'email' => fake()->word(),
+            'email' => fake()->safeEmail(),
             'phonenumber' => fake()->phoneNumber(),
             'password' => 'password',
             'is_admin' => fake()->boolean(),
-            'is_ambassador' => fake()->boolean(),
             'institution_id' => $institution_ids->random(),
-
-
         ];
     }
 

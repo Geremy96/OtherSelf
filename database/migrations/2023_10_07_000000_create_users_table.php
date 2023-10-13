@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('phonenumber');
             $table->string('password');
             $table->boolean('is_admin');
-            $table->boolean('is_ambassador');
             $table->foreignIdFor(Institution::class)->constrained();
             $table->rememberToken();
             $table->timestamps();
