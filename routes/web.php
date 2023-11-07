@@ -15,14 +15,10 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+Route::view('/', 'index')->name('index');
+Route::view('about', 'learnabout')->name('about');
+Route::view('get_premium', 'get_premium')->name('get_premium');
+
 
 Route::get('login', function() {
     return Inertia::render('Login');
